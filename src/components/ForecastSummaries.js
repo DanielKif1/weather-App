@@ -4,6 +4,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "../styles/ForecastSummaries.css";
 import ForecastSummary from "./ForecastSummary";
+// import ForecastDetails from "./ForecastDetails";
 
 /* eslint-disable  no-unused-vars */
 function ForecastSummaries({ forecasts }) {
