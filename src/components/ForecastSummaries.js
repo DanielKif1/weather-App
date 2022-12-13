@@ -1,37 +1,39 @@
+/* eslint-disable no-console */
 /* eslint-disable react/no-unused-prop-types */
 /* eslint-disable react/prop-types */
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import "../styles/ForecastSummaries.css";
 import ForecastSummary from "./ForecastSummary";
 // import ForecastDetails from "./ForecastDetails";
 
 /* eslint-disable  no-unused-vars */
-function ForecastSummaries({ forecasts }) {
-  console.log({ forecasts });
-
+function ForecastSummaries({ forecasts, onForecastSelect }) {
+  console.log("edcrfvtygb", forecasts);
   return (
     <div className="forecast-summaries">
       {forecasts.map((forecast) => (
         <ForecastSummary
-          key={forecast.date}
-          date={forecast.date}
-          description={forecast.description}
+          key={forecast.dt}
+          dt={forecast.dt}
+          weather={forecast.weather}
           icon={forecast.icon}
-          temperature={forecast.temperature}
+          onSelect={onForecastSelect}
+          main={forecast.main}
         />
       ))}
     </div>
   );
 }
-ForecastSummaries.propTypes = {
-  date: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  icon: PropTypes.string.isRequired,
-  temperature: PropTypes.shape({
-    max: PropTypes.number,
-    min: PropTypes.number,
-  }).isRequired,
-};
+// ForecastSummaries.propTypes = {
+//   date: PropTypes.string.isRequired,
+//  list: PropTypes.string.isRequired,
+//   icon: PropTypes.string.isRequired,
+//   temperature: PropTypes.shape({
+//     max: PropTypes.number,
+//     min: PropTypes.number,
+//   }).isRequired,
+//   onForecastSelect: PropTypes.func.isRequired,
+// };
 
 export default ForecastSummaries;

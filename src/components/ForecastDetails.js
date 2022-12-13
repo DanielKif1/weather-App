@@ -1,34 +1,37 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import moment from "moment";
-import WeatherIcon from "react-icons-weather";
+import "../styles/ForecastDetails.css";
 
 function ForecastDetails({ forecast }) {
-  const { date, temperature, humidity, wind, icon } = forecast;
+  const { dt, main, wind, weather } = forecast;
+
   console.log({ forecast });
+
   return (
     <div className="forecast-details">
       <div className="forecast-details_date">
-        {moment(date).format("ddd Do MMM")}
+        {moment(dt).format("ddd Do MMM")}
       </div>
       <div className="forecast-details_temperature">
         <div>temperature</div>&nbsp;
-        {temperature.max}&nbsp;&nbsp;
-        {temperature.min}
+        {main.temp_max}&nbsp;&nbsp;
+        {main.temp_min}
         &deg;C
       </div>
 
       <div className="forecast-details_humidity">
-        <div>humidity:</div>&nbsp;
-        <div> {humidity}</div>
-      </div>
-      <div className="forecast-details_wind">
-        <div>wind:</div>&nbsp;
-        <div>{wind.speed}</div>
-        <div>{wind.direction}</div>
-        &deg;C
+        <div>humidity:</div>
+        <div> {main.humidity}</div>
       </div>
       <div className="forecast-summary_icon" data-testid="forecast-icon">
-        <WeatherIcon name="owm" iconId={icon} />
+        {weather.icon}
+      </div>
+      <div className="forecast-details_wind">
+        <div>wind:</div>
+        <div>{wind.speed}</div>
+        <div>{wind.deg}</div>
+        <div>{wind.gust}</div>
       </div>
     </div>
   );
