@@ -5,15 +5,17 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function ForecastSummary(props) {
-  const { dt, main, weather, onSelect } = props;
-  console.log("temperature", main.temp);
-  console.log("description", weather[0].description);
-  console.log("icon", weather[0].icon);
-  console.log("date", dt);
+  // const { dt_txt, main, weather, onSelect }rops= props;
+  const date = props.forecast.dt_txt;
+  const weather = props.forecast.weather;
+  const main = props.forecast.main;
+  const { icon } = props.forecast;
+  const onSelect = props.onSelect;
+
   return (
     <div className="forecast-summary">
       <div className="forecast-summary_date">
-        {moment(dt).format("ddd Do MMM")}
+        {moment(date).format("ddd Do MMM,h:mm:ss a")}
       </div>
       <div id="icon" className="forecast-summery__icon">
         <img
@@ -23,14 +25,14 @@ function ForecastSummary(props) {
         />
       </div>
       <div className="forecast-summary_temperature">
-        {main.temp}
+        {main.temp_max}
         &deg;C
       </div>
       <div className="forecast-summary_description">
         {weather[0].description}
       </div>
 
-      <button onClick={() => onSelect(dt)} type="button" className="btn">
+      <button onClick={() => onSelect(date)} type="button" className="btn">
         More details
       </button>
     </div>
@@ -38,7 +40,7 @@ function ForecastSummary(props) {
 }
 
 ForecastSummary.propTypes = {
-  dt: PropTypes.string.isRequired,
+  dt_txt: PropTypes.string.isRequired,
   weather: PropTypes.shape({
     description: PropTypes.string,
     main: PropTypes.string,
@@ -48,7 +50,6 @@ ForecastSummary.propTypes = {
   main: PropTypes.shape({
     temp_max: PropTypes.number,
     temp_min: PropTypes.number,
-    temp: PropTypes.number,
   }).isRequired,
   onSelect: PropTypes.func.isRequired,
 };

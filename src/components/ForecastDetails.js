@@ -6,12 +6,17 @@ import "../styles/ForecastDetails.css";
 function ForecastDetails({ forecast }) {
   const { dt, main, wind, weather } = forecast;
 
-  console.log({ forecast });
-
   return (
     <div className="forecast-details">
       <div className="forecast-details_date">
         {moment(dt).format("ddd Do MMM")}
+      </div>
+      <div id="icon" className="forecast-summery__icon">
+        <img
+          id="icon"
+          src={`http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`}
+          alt="weather icon"
+        />
       </div>
       <div className="forecast-details_temperature">
         <div>temperature</div>&nbsp;
@@ -21,17 +26,11 @@ function ForecastDetails({ forecast }) {
       </div>
 
       <div className="forecast-details_humidity">
-        <div>humidity:</div>
-        <div> {main.humidity}</div>
+        <div>humidity: {main.humidity}</div>
       </div>
-      <div className="forecast-summary_icon" data-testid="forecast-icon">
-        {weather.icon}
-      </div>
+
       <div className="forecast-details_wind">
-        <div>wind:</div>
-        <div>{wind.speed}</div>
-        <div>{wind.deg}</div>
-        <div>{wind.gust}</div>
+        <div>wind: {wind.speed}</div>
       </div>
     </div>
   );

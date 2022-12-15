@@ -15,11 +15,12 @@ function ForecastSummaries({ forecasts, onForecastSelect }) {
       {forecasts.map((forecast) => (
         <ForecastSummary
           key={forecast.dt}
-          dt={forecast.dt}
-          weather={forecast.weather}
-          icon={forecast.icon}
+          forecast={forecast}
+          // dt={forecast.dt_txt}
+          // weather={forecast.weather}
+          // icon={forecast.icon}
           onSelect={onForecastSelect}
-          main={forecast.main}
+          // main={forecast.main}
         />
       ))}
     </div>
