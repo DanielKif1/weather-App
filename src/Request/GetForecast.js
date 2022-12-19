@@ -25,10 +25,16 @@ const GetForecast = async (
       const { status } = error.response;
       if (status === 404) {
         setErrorMessage("No such town or city, try again!");
+        setTimeout(() => {
+          setErrorMessage("");
+        }, 5000);
         console.error("Location is not valid", error);
       }
       if (status === 500) {
         setErrorMessage("Oops, server error, try again later.");
+        setTimeout(() => {
+          setErrorMessage("");
+        }, 5000);
         console.error("Server error", error);
       }
     });

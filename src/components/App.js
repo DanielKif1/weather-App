@@ -37,6 +37,7 @@ function App() {
 
   return (
     <div className="weather-app">
+      <h1 className="weather">Weather App</h1>
       <LocationDetails
         className="location-details"
         city={location.name}
