@@ -8,7 +8,6 @@ import ForecastSummary from "./ForecastSummary";
 
 /* eslint-disable  no-unused-vars */
 function ForecastSummaries({ forecasts, onForecastSelect }) {
-  console.log("edcrfvtygb", forecasts);
   return (
     <div className="forecast-summaries">
       {forecasts.map((forecast) => (

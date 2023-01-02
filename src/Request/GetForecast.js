@@ -8,7 +8,7 @@ const GetForecast = async (
   setErrorMessage
 ) => {
   let endpoint = `https://api.openweathermap.org/data/2.5/forecast?q=${SearchText}&cnt=5&appid=52ccebefe6797aa1d891cdcc98467d5c&units=metric`;
-  console.log("erroMess: ", setErrorMessage);
+
   if (SearchText) {
     endpoint = `https://api.openweathermap.org/data/2.5/forecast?q=${SearchText}&cnt=5&appid=52ccebefe6797aa1d891cdcc98467d5c&units=metric`;
   }
